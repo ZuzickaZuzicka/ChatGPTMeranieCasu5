@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Časová aplikácia</title>
+    <!-- Favicon, pridaj svoje vlastné, ak ešte nemáš -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Prepojenie na externý štýlový súbor -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Prepojenie na Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Hlava stránky -->
+    <header>
+        <h1>Časová Aplikácia</h1>
+        <div class="language-selector">
+            <label for="language">Vyber jazyk: </label>
+            <select id="language" onchange="changeLanguage()">
+                <option value="sk">Slovenský</option>
+                <option value="en">English</option>
+                <option value="de">Deutsch</option>
+                <option value="fr">Français</option>
+                <option value="uk">Українська</option>
+                <option value="ru">Русский</option>
+            </select>
+        </div>
+    </header>
+
+    <!-- Hlavný obsah -->
+    <main>
+        <div id="activityContainer">
+            <label for="date">Dátum:</label>
+            <input type="date" id="date" value="2025-04-17" onchange="updateDate()">
+            <p id="dayOfWeek"></p>
+
+            <!-- Aktivita Práca -->
+            <div class="activity">
+                <label for="work">Práca:</label>
+                <button onclick="startStopTimer('work')">Start/Stop</button>
+                <p id="workTime">0:00</p>
+            </div>
+            <!-- Aktivita Štúdium -->
+            <div class="activity">
+                <label for="study">Štúdium:</label>
+                <button onclick="startStopTimer('study')">Start/Stop</button>
+                <p id="studyTime">0:00</p>
+            </div>
+            <!-- Aktivita Starostlivosť o domácnosť -->
+            <div class="activity">
+                <label for="housework">Starostlivosť o domácnosť:</label>
+                <button onclick="startStopTimer('housework')">Start/Stop</button>
+                <p id="houseworkTime">0:00</p>
+            </div>
+            <!-- Aktivita Venčenie psa -->
+            <div class="activity">
+                <label for="dogWalking">Venčenie psa:</label>
+                <button onclick="startStopTimer('dogWalking')">Start/Stop</button>
+                <p id="dogWalkingTime">0:00</p>
+            </div>
+
+            <!-- Graf zobrazenia štatistík -->
+            <canvas id="myChart"></canvas>
+        </div>
+    </main>
+
+    <!-- Pätička stránky -->
+    <footer>
+        <p>&copy; 2025 Časová aplikácia. Všetky práva vyhradené.</p>
+    </footer>
+
+    <!-- JavaScript pre logiku aplikácie -->
+    <script src="app.js"></script>
+</body>
+</html>
